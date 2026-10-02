@@ -1,0 +1,22 @@
+public class Solution {
+    public int CharacterReplacement(string s, int k) {
+        int l = 0;
+        int maxC=0;
+        int maxL=0;
+        int[] freq = new int[26];
+
+        for (int r=0;r<s.Length;r++){
+            freq[s[r]-'A'] ++;
+            maxC=Math.Max(freq[s[r]-'A'],maxC);
+
+            while((r-l+1)-maxC>k){
+                freq[s[l]-'A']--;
+                l++;
+
+            }
+
+            maxL = Math.Max(maxL,r-l+1);
+        }
+        return maxL;
+    }
+}
